@@ -3,5 +3,8 @@ target
 .gradle
 *.iml
 out
+.classpath
+.project
+.settings/
 
 /.idea/*
