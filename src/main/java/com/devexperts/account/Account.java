@@ -28,8 +28,12 @@ public class Account {
     public Double getBalance() {
         return balance;
     }
+    
+    public void debit(Double amount) {
+    	this.balance -= amount;
+    }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void credit(Double amount) {
+    	this.balance += amount;
     }
 }
