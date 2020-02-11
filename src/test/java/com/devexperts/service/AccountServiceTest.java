@@ -22,7 +22,7 @@ public class AccountServiceTest {
 	}
 	
 	@Test
-	void transfer() {
+	void transfer(){
 		
 		AccountKey accountKey1 = AccountKey.valueOf(1l);
 		Account account1 = new Account( accountKey1, "Adriano", "Ribeiro", 1000d);
@@ -56,5 +56,26 @@ public class AccountServiceTest {
 	    });
 		
 		assertEquals("InsufficientFundsException", exception.getMessage());
+	}
+	
+	@Test
+	void transferTenThousandTimes() {
+		
+		AccountKey accountKey1 = AccountKey.valueOf(1l);
+		Account account1 = new Account( accountKey1, "Adriano", "Ribeiro", 10000d);
+		
+		AccountKey accountKey2 = AccountKey.valueOf(2l);
+		Account account2 = new Account( accountKey2, "Juca", "Ribas", 500d);
+		
+		accountService.createAccount(account1);
+		accountService.createAccount(account2);
+		
+		//Transfer 
+		for (int i = 0; i < 10000; i++) {
+			accountService.transfer(account1, account2, 1);
+		}
+		
+		assertEquals(0, account1.getBalance());
+		assertEquals(10500, account2.getBalance());
 	}
 }
