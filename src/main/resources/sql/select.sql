@@ -11,6 +11,6 @@ Insert into TRANSFERS values (4, 3, 1, 50, now());
 Insert into TRANSFERS values (5, 3, 1, 5000, "2018-01-01");
 
 //sql query that finds all accounts that in total transferred more than 1000$ to other people starting from 2019-01-01
-SELECT SOURCE_ID, sum(AMOUNT) FROM bd_jpay.TRANSFERS 
+SELECT SOURCE_ID, sum(AMOUNT) FROM TRANSFERS 
 WHERE TRANSFER_TIME>"2019-01-01"
 group by SOURCE_ID having sum(AMOUNT)>1000;
